@@ -134,22 +134,43 @@ const IngredientsPage = () => {
           </div>
 
           {/* Category Filter Buttons */}
-          <div className="flex justify-center">
-            <div className="flex flex-wrap gap-3 bg-gray-50 p-2 rounded-full border border-gray-200">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  type="button"
-                  onClick={() => handleCategoryChange(category)}
-                  className={`px-6 py-3 rounded-full font-bold text-sm transition-all duration-300 whitespace-nowrap ${
-                    selectedCategory === category
-                      ? "bg-[#F9461C] text-white shadow-lg scale-105"
-                      : "bg-white text-gray-600 hover:bg-gray-100 hover:text-[#F9461C] shadow-sm hover:shadow-md"
-                  }`}
-                >
-                  {category.charAt(0).toUpperCase() + category.slice(1)}
-                </button>
-              ))}
+          <div className="flex justify-center px-4">
+            <div className="w-full sm:w-auto max-w-7xl">
+              {/* Mobile: Grid Layout */}
+              <div className="grid grid-cols-2 gap-2 sm:hidden bg-gray-50 p-3 rounded-2xl border border-gray-200">
+                {categories.map((category) => (
+                  <button
+                    key={category}
+                    type="button"
+                    onClick={() => handleCategoryChange(category)}
+                    className={`px-3 py-2.5 rounded-full font-bold text-xs transition-all duration-300 whitespace-nowrap text-center ${
+                      selectedCategory === category
+                        ? "bg-[#F9461C] text-white shadow-lg"
+                        : "bg-white text-gray-600 hover:bg-gray-100 hover:text-[#F9461C] shadow-sm"
+                    } ${category === 'all' ? 'col-span-2' : ''}`}
+                  >
+                    {category.charAt(0).toUpperCase() + category.slice(1)}
+                  </button>
+                ))}
+              </div>
+              
+              {/* Desktop: Horizontal Layout */}
+              <div className="hidden sm:flex flex-nowrap gap-2 lg:gap-3 xl:gap-4 bg-gray-50 p-2 rounded-full border border-gray-200 justify-center w-full">
+                {categories.map((category) => (
+                  <button
+                    key={category}
+                    type="button"
+                    onClick={() => handleCategoryChange(category)}
+                    className={`px-2 md:px-4 lg:px-5 xl:px-6 py-3 rounded-full font-bold text-xs md:text-sm transition-all duration-300 whitespace-nowrap ${
+                      selectedCategory === category
+                        ? "bg-[#F9461C] text-white shadow-lg scale-105"
+                        : "bg-white text-gray-600 hover:bg-gray-100 hover:text-[#F9461C] shadow-sm hover:shadow-md"
+                    }`}
+                  >
+                    {category.charAt(0).toUpperCase() + category.slice(1)}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
