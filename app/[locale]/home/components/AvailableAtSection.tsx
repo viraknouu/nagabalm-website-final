@@ -70,12 +70,12 @@ const AvailableAtSection = () => {
   };
 
   return (
-    <section className="py-16 bg-white">
-      <div className="container mx-auto px-4">
-        <h2 className={`text-[#F9461C] text-4xl font-bold text-center mb-2 ${locale === 'km' ? 'font-hanuman' : ''}`}>
+    <section className="py-12 sm:py-16 bg-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className={`text-[#F9461C] text-2xl sm:text-3xl lg:text-4xl font-bold text-center mb-2 ${locale === 'km' ? 'font-hanuman' : ''}`}>
           {t('title')}
         </h2>
-        <p className={`text-center text-gray-600 mb-12 ${locale === 'km' ? 'font-hanuman' : ''}`}>
+        <p className={`text-center text-gray-600 mb-8 sm:mb-12 text-sm sm:text-base ${locale === 'km' ? 'font-hanuman' : ''}`}>
           {t('subtitle')}
         </p>
 
@@ -85,13 +85,13 @@ const AvailableAtSection = () => {
           onMouseLeave={handleMouseUp}
         >
           {/* Gradient Overlays */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10" />
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10" />
+          <div className="absolute left-0 top-0 bottom-0 w-16 sm:w-24 lg:w-32 bg-gradient-to-r from-white to-transparent z-10" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 sm:w-24 lg:w-32 bg-gradient-to-l from-white to-transparent z-10" />
 
           {/* Logo Container */}
           <div
             ref={containerRef}
-            className="flex gap-8 overflow-x-hidden cursor-grab active:cursor-grabbing"
+            className="flex gap-4 sm:gap-6 lg:gap-8 overflow-x-hidden cursor-grab active:cursor-grabbing"
             onMouseDown={handleMouseDown}
             onMouseUp={handleMouseUp}
             onMouseMove={handleMouseMove}
@@ -100,15 +100,15 @@ const AvailableAtSection = () => {
             {[...partners, ...partners].map((partner, index) => (
               <div
                 key={`${partner.name}-${index}`}
-                className="flex-shrink-0 w-32 h-32 relative group"
+                className="flex-shrink-0 w-20 h-20 sm:w-24 sm:h-24 lg:w-32 lg:h-32 relative group"
               >
                 <div className="absolute inset-0 bg-white rounded-lg transform transition-transform group-hover:scale-105">
                   <Image
                     src={partner.logo}
                     alt={partner.name}
                     fill
-                    className="object-contain aspect-square p-4"
-                    sizes="(max-width: 128px) 100vw, 128px"
+                    className="object-contain aspect-square p-2 sm:p-3 lg:p-4"
+                    sizes="(max-width: 640px) 80px, (max-width: 1024px) 96px, 128px"
                   />
                 </div>
               </div>
@@ -117,9 +117,9 @@ const AvailableAtSection = () => {
         </div>
 
         {/* Find Us Button */}
-        <div className="text-center mt-12">
+        <div className="text-center mt-8 sm:mt-12">
           <Link href={`/${locale}/where-to-find`}>
-            <button className={`bg-[#F9461C] text-white font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 hover:bg-[#d13a17] hover:scale-105 hover:shadow-lg ${locale === 'km' ? 'font-hanuman' : ''}`}>
+            <button className={`bg-[#F9461C] text-white font-bold py-2.5 sm:py-3 px-6 sm:px-8 rounded-full text-base sm:text-lg transition-all duration-300 hover:bg-[#d13a17] hover:scale-105 hover:shadow-lg ${locale === 'km' ? 'font-hanuman' : ''}`}>
               {t('findUsAt')}
             </button>
           </Link>

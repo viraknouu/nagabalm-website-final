@@ -80,8 +80,8 @@ const Navbar = () => {
     const isActive = pathname === fullHref;
     
     const baseClasses = isMobile 
-      ? "text-2xl font-semibold tracking-wide transition-all duration-300 hover:scale-105 relative group"
-      : "text-sm font-bold tracking-wider transition-all duration-300 hover:scale-105 relative group px-4 py-2";
+      ? "text-xl sm:text-2xl font-semibold tracking-wide transition-all duration-300 hover:scale-105 relative group"
+      : "text-xs sm:text-sm font-bold tracking-wider transition-all duration-300 hover:scale-105 relative group px-2 sm:px-3 lg:px-4 py-1.5 sm:py-2";
     
     return (
       <Link
@@ -117,7 +117,7 @@ const Navbar = () => {
     <>
       {/* Desktop & Tablet Navigation */}
       <nav
-        className={`fixed left-1/2 top-6 z-50 transform -translate-x-1/2 w-[95vw] max-w-7xl
+        className={`fixed left-1/2 top-4 sm:top-6 z-50 transform -translate-x-1/2 w-[95vw] max-w-7xl
           ${scrolled 
             ? "bg-white/95 backdrop-blur-md shadow-xl border border-white/20" 
             : "bg-white/90 backdrop-blur-sm shadow-lg"
@@ -126,38 +126,38 @@ const Navbar = () => {
           ${showNavbar ? 'translate-y-0 opacity-100 pointer-events-auto' : '-translate-y-full opacity-0 pointer-events-none'}
           transition-transform transition-opacity duration-300`}
       >
-        {/* Logo en arrière-plan avec opacité */}
-        <div className="absolute left-0 top-0 h-full flex items-center pl-6 pointer-events-none">
-          <Image
-            src="/images/Logo/Naga Balm__Brandmark_Fire.png"
-            alt="Background Logo"
-            width={72}
-            height={72}
-            className="max-h-full max-w-[72px] object-contain opacity-30"
-          />
+        {/* Logo en arrière-plan avec opacité - hidden on mobile/tablet */}
+        <div className="absolute left-0 top-0 h-full items-center pl-4 sm:pl-6 pointer-events-none hidden lg:flex">
+          <div className="w-12 h-12 sm:w-16 sm:h-16 lg:w-[72px] lg:h-[72px] relative">
+            <Image
+              src="/images/Logo/Naga Balm__Brandmark_Fire.png"
+              alt="Background Logo"
+              fill
+              className="object-contain opacity-30"
+            />
+          </div>
         </div>
 
-        <div className="flex items-center justify-center px-6 py-3 relative z-10">
+        <div className="flex items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 relative z-10">
             {/* Container principal centré sur le logo */}
             <div className="flex items-center justify-center w-full">
               {/* Navigation gauche */}
-              <div className="flex items-center space-x-2 mr-4">
+              <div className="flex items-center space-x-1 sm:space-x-2 mr-2 sm:mr-4">
                 {leftLinks.map(link => (
                   <NavLink key={link.href} href={link.href} label={link.label} />
                 ))}
               </div>
 
               {/* Logo centré */}
-              <div className="mx-3 transition-transform duration-300 hover:scale-110">
+              <div className="mx-2 sm:mx-3 transition-transform duration-300 hover:scale-110">
                 <Link href={`/${locale}`} className="block">
-                  <div className="relative">
+                  <div className="relative w-8 h-8 sm:w-10 sm:h-10 lg:w-[42px] lg:h-[42px]">
                     <Image
                       src="/images/Logo/Naga Balm__Brandmark_Fire.png"
                       alt="Naga Balm Logo"
-                      width={42}
-                      height={42}
+                      fill
                       priority
-                      className="drop-shadow-md"
+                      className="drop-shadow-md object-contain"
                     />
                     {/* Effet de glow au hover */}
                     <div className="absolute inset-0 bg-gradient-to-r from-[#F97316] to-[#2DD4BF] rounded-full opacity-0 hover:opacity-20 transition-opacity duration-300 blur-md"></div>
@@ -166,7 +166,7 @@ const Navbar = () => {
               </div>
 
               {/* Navigation droite */}
-              <div className="flex items-center space-x-2 ml-4">
+              <div className="flex items-center space-x-1 sm:space-x-2 ml-2 sm:ml-4">
                 {rightLinks.map(link => (
                   <NavLink key={link.href} href={link.href} label={link.label} />
                 ))}
@@ -174,13 +174,13 @@ const Navbar = () => {
             </div>
           
           {/* Language Switcher Desktop */}
-          <LanguageSwitcher className="ml-6 absolute right-6" />
+          <LanguageSwitcher className="ml-4 sm:ml-6 absolute right-4 sm:right-6" />
         </div>
       </nav>
 
       {/* Mobile Navigation */}
       <nav
-        className={`fixed left-1/2 top-4 z-50 transform -translate-x-1/2 w-[95vw] max-w-sm
+        className={`fixed left-1/2 top-4 z-50 transform -translate-x-1/2 w-[95vw] max-w-xs sm:max-w-sm
           ${scrolled 
             ? "bg-white/95 backdrop-blur-md shadow-xl" 
             : "bg-white/90 backdrop-blur-sm shadow-lg"
@@ -189,8 +189,8 @@ const Navbar = () => {
           ${showNavbar ? 'translate-y-0 opacity-100 pointer-events-auto' : '-translate-y-full opacity-0 pointer-events-none'}
           transition-transform transition-opacity duration-300`}
       >
-        {/* Logo en arrière-plan pour mobile */}
-        <div className="absolute right-3 top-1/2 transform -translate-y-1/2 opacity-30 pointer-events-none">
+        {/* Logo en arrière-plan pour mobile - hidden to avoid conflicts */}
+        <div className="absolute right-3 top-1/2 transform -translate-y-1/2 opacity-30 pointer-events-none hidden">
           <Image
             src="/images/Logo/Naga Balm__Brandmark_Fire.png"
             alt="Background Logo"
@@ -199,41 +199,42 @@ const Navbar = () => {
           />
         </div>
 
-        <div className="flex items-center justify-between px-5 py-2.5 relative z-10">
+        <div className="flex items-center justify-between px-4 sm:px-5 py-2 sm:py-2.5 relative z-10">
           {/* Bouton hamburger animé */}
           <button
-            className="flex flex-col justify-center items-center w-12 h-12 focus:outline-none 
+            className="flex flex-col justify-center items-center w-10 h-10 sm:w-12 sm:h-12 focus:outline-none 
               transition-all duration-300 hover:scale-110 rounded-full hover:bg-[#F97316]/10"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
             <span
-              className={`block w-6 h-0.5 bg-[#F97316] transition-all duration-300 rounded-full ${
-                isOpen ? "rotate-45 translate-y-2" : ""
+              className={`block w-5 sm:w-6 h-0.5 bg-[#F97316] transition-all duration-300 rounded-full ${
+                isOpen ? "rotate-45 translate-y-1.5 sm:translate-y-2" : ""
               }`}
             />
             <span
-              className={`block w-6 h-0.5 bg-[#F97316] my-1.5 transition-all duration-300 rounded-full ${
+              className={`block w-5 sm:w-6 h-0.5 bg-[#F97316] my-1 sm:my-1.5 transition-all duration-300 rounded-full ${
                 isOpen ? "opacity-0 scale-0" : ""
               }`}
             />
             <span
-              className={`block w-6 h-0.5 bg-[#F97316] transition-all duration-300 rounded-full ${
-                isOpen ? "-rotate-45 -translate-y-2" : ""
+              className={`block w-5 sm:w-6 h-0.5 bg-[#F97316] transition-all duration-300 rounded-full ${
+                isOpen ? "-rotate-45 -translate-y-1.5 sm:-translate-y-2" : ""
               }`}
             />
           </button>
 
           {/* Logo mobile centré */}
           <Link href={`/${locale}`} className="absolute left-1/2 transform -translate-x-1/2">
-            <Image
-              src="/images/Logo/Naga Balm__Brandmark_Fire.png"
-              alt="Naga Balm Logo"
-              width={32}
-              height={32}
-              priority
-              className="transition-transform duration-300 hover:scale-110"
-            />
+            <div className="w-7 h-7 sm:w-8 sm:h-8 relative transition-transform duration-300 hover:scale-110">
+              <Image
+                src="/images/Logo/Naga Balm__Brandmark_Fire.png"
+                alt="Naga Balm Logo"
+                fill
+                priority
+                className="object-contain"
+              />
+            </div>
           </Link>
 
           {/* Language Switcher Mobile */}
@@ -263,14 +264,15 @@ const Navbar = () => {
               isOpen ? "scale-100 opacity-100 translate-y-0" : "scale-50 opacity-0 translate-y-10"
             }`}
           >
-            <Image
-              src="/images/Logo/Naga Balm__Brandmark_Fire.png"
-              alt="Naga Logo"
-              width={64}
-              height={64}
-              priority
-              className="drop-shadow-lg"
-            />
+            <div className="w-12 h-12 sm:w-16 sm:h-16 relative">
+              <Image
+                src="/images/Logo/Naga Balm__Brandmark_Fire.png"
+                alt="Naga Logo"
+                fill
+                priority
+                className="drop-shadow-lg object-contain"
+              />
+            </div>
           </div>
 
           {/* Navigation avec animations décalées */}

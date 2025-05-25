@@ -9,7 +9,7 @@ const DiscoverSolutionSection = () => {
 
   return (
     <section
-      className="w-full bg-[#F5F5F5] py-20 flex flex-col items-center relative overflow-hidden"
+      className="w-full bg-[#F5F5F5] py-12 sm:py-16 lg:py-20 flex flex-col items-center relative overflow-hidden"
       style={{
         backgroundImage: "url('/images/about-grid/Mainposter.png')",
         backgroundSize: "cover",
@@ -18,18 +18,18 @@ const DiscoverSolutionSection = () => {
       }}
     >
       <div className="w-full flex flex-col items-center">
-        <div className="w-full max-w-7xl flex flex-col lg:flex-row items-start justify-between px-4 gap-12">
-          <div className="flex-1 flex flex-col gap-8">
-            <h2 className={`text-[#FF4500] text-4xl sm:text-5xl font-extrabold leading-tight ${locale === 'km' ? 'font-hanuman' : ''}`}>
+        <div className="w-full max-w-7xl flex flex-col lg:flex-row items-start justify-between px-4 sm:px-6 lg:px-8 gap-8 sm:gap-12">
+          <div className="flex-1 flex flex-col gap-6 sm:gap-8">
+            <h2 className={`text-[#FF4500] text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight text-center lg:text-left ${locale === 'km' ? 'font-hanuman' : ''}`}>
               {locale === 'en' ? (
                 <>DISCOVER THE PERFECT<br />SOLUTION FOR YOUR NEEDS.</>
               ) : (
                 t('title')
               )}
             </h2>
-            <div className="flex flex-col gap-16">
+            <div className="flex flex-col gap-8 sm:gap-12 lg:gap-16">
               {/* Active Lifestyles Card */}
-              <div className="bg-[#00B4D8] card p-6 text-white w-full max-w-2xl flex flex-row items-center relative h-56 overflow-visible rounded-xl">
+              <div className="bg-[#00B4D8] card p-4 sm:p-6 text-white w-full max-w-2xl flex flex-col sm:flex-row items-center relative min-h-[280px] sm:h-56 overflow-visible rounded-xl">
                 <div className="flex-1 pr-32 pl-4">
                   <h3 className={`font-extrabold text-3xl mb-3 ${locale === 'km' ? 'font-hanuman' : ''}`}>
                     {t('activeLifestyles.title')}
@@ -69,7 +69,7 @@ const DiscoverSolutionSection = () => {
               </div>
 
               {/* Everyday Relief Card */}
-              <div className="bg-[#00A67E] card p-6 text-white w-full max-w-2xl flex flex-row items-center relative h-56 overflow-visible rounded-xl">
+              <div className="bg-[#00A67E] card p-4 sm:p-6 text-white w-full max-w-2xl flex flex-col sm:flex-row items-center relative min-h-[280px] sm:h-56 overflow-visible rounded-xl">
                 <div className="flex-1 pr-32 pl-4">
                   <h3 className={`font-extrabold text-3xl mb-3 ${locale === 'km' ? 'font-hanuman' : ''}`}>
                     {t('everydayRelief.title')}

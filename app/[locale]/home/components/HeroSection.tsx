@@ -69,14 +69,14 @@ const HeroSection = () => {
             isVideoLoaded ? 'opacity-0 pointer-events-none' : 'opacity-100'
           }`}
         >
-          <div className="w-16 h-16 border-4 border-[#F9461C] border-t-transparent rounded-full animate-spin" />
+          <div className="w-12 h-12 sm:w-16 sm:h-16 border-4 border-[#F9461C] border-t-transparent rounded-full animate-spin" />
         </div>
       </div>
       {/* Overlay for better text readability */}
       <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-black/10 z-0" />
       {/* Content */}
-      <div className="relative z-10 flex flex-col justify-center items-start h-full w-full max-w-7xl mx-auto px-6 lg:px-12 pt-32 pb-12">
-        <h1 className={`text-white font-extrabold text-5xl sm:text-6xl lg:text-7xl leading-tight mb-6 drop-shadow-lg transition-all duration-300 ${
+      <div className="relative z-10 flex flex-col justify-center items-start h-full w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 pt-24 sm:pt-32 pb-8 sm:pb-12">
+        <h1 className={`text-white font-extrabold text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight mb-4 sm:mb-6 drop-shadow-lg transition-all duration-300 ${
           locale === 'km' ? 'font-hanuman' : ''
         }`}>
           {t('title').split('\n').map((line, index) => (
@@ -86,15 +86,15 @@ const HeroSection = () => {
             </React.Fragment>
           ))}
         </h1>
-        <p className={`text-white text-lg max-w-md mb-8 drop-shadow-lg transition-all duration-300 ${
-          locale === 'km' ? 'font-hanuman text-xl' : ''
+        <p className={`text-white text-base sm:text-lg max-w-xs sm:max-w-md mb-6 sm:mb-8 drop-shadow-lg transition-all duration-300 ${
+          locale === 'km' ? 'font-hanuman text-lg sm:text-xl' : ''
         }`}>
           {t('description')}
         </p>
-        <div className="flex flex-col sm:flex-row gap-4">
+        <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto">
           <Link href={`/${locale}/products`}>
             <button 
-              className={`bg-[#F9461C] hover:bg-[#d13a17] text-white font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg ${
+              className={`bg-[#F9461C] hover:bg-[#d13a17] text-white font-bold py-2.5 sm:py-3 px-6 sm:px-8 rounded-full text-base sm:text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg w-full sm:w-auto text-center ${
                 locale === 'km' ? 'font-hanuman' : ''
               }`}
             >
@@ -103,7 +103,7 @@ const HeroSection = () => {
           </Link>
           <Link href={`/${locale}/about`}>
             <button 
-              className={`bg-[#FFE6B0] hover:bg-[#ffd580] text-[#F9461C] font-bold py-3 px-8 rounded-full text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg ${
+              className={`bg-[#FFE6B0] hover:bg-[#ffd580] text-[#F9461C] font-bold py-2.5 sm:py-3 px-6 sm:px-8 rounded-full text-base sm:text-lg transition-all duration-300 hover:scale-105 hover:shadow-lg w-full sm:w-auto text-center ${
                 locale === 'km' ? 'font-hanuman' : ''
               }`}
             >

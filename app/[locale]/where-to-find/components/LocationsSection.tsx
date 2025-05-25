@@ -56,16 +56,16 @@ const LocationsSection = () => {
   ];
 
   return (
-    <section className="w-full bg-white flex flex-col items-center py-16 px-4">
+    <section className="w-full bg-white flex flex-col items-center py-12 sm:py-16 px-4 sm:px-6 lg:px-8">
       <div className="w-full max-w-6xl">
         {locationGroups.map((group, idx) => (
-          <div key={group.titleKey} className="mb-12">
-            <h3 className="text-[#F9461C] text-xl font-extrabold mb-4 uppercase">{t(group.titleKey)}</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 md:gap-6 mb-2">
+          <div key={group.titleKey} className="mb-8 sm:mb-12">
+            <h3 className="text-[#F9461C] text-lg sm:text-xl font-extrabold mb-3 sm:mb-4 uppercase">{t(group.titleKey)}</h3>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3 sm:gap-4 md:gap-6 mb-2">
               {group.partners.map((partner, i) => (
                 <div
                   key={i}
-                  className="flex items-center justify-center border-2 border-[#F9461C] rounded-md bg-white aspect-square w-[110px] h-[110px] transition-transform hover:scale-105 hover:shadow-lg"
+                  className="flex items-center justify-center border-2 border-[#F9461C] rounded-md bg-white aspect-square w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 xl:w-[110px] xl:h-[110px] mx-auto transition-transform hover:scale-105 hover:shadow-lg"
                   title={partner.name}
                 >
                   <Image
@@ -73,7 +73,8 @@ const LocationsSection = () => {
                     alt={partner.name}
                     width={80}
                     height={80}
-                    className="object-contain max-h-20 max-w-20"
+                    className="object-contain max-h-12 max-w-12 sm:max-h-16 sm:max-w-16 md:max-h-18 md:max-w-18 lg:max-h-20 lg:max-w-20"
+                    sizes="(max-width: 640px) 48px, (max-width: 768px) 64px, (max-width: 1024px) 72px, 80px"
                     loading="lazy"
                   />
                 </div>

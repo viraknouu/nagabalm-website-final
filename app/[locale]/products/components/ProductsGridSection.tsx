@@ -145,9 +145,9 @@ const ProductCard: React.FC<{
   }, [product.id, onLearnMore]);
 
   return (
-    <article className="bg-white card shadow-lg rounded-lg p-6 flex flex-col h-[520px] hover:shadow-xl transition-shadow duration-300">
+    <article className="bg-white card shadow-lg rounded-lg p-4 sm:p-6 flex flex-col h-auto min-h-[450px] sm:min-h-[500px] lg:h-[520px] hover:shadow-xl transition-shadow duration-300">
       {/* Product Image Area */}
-      <div className="relative w-full aspect-square mb-4 overflow-hidden rounded-lg bg-gray-50">
+      <div className="relative w-full aspect-square mb-3 sm:mb-4 overflow-hidden rounded-lg bg-gray-50">
         <Image 
           src={product.img} 
           alt={product.name}
@@ -162,21 +162,21 @@ const ProductCard: React.FC<{
 
       {/* Product Details */}
       <div className="flex flex-col flex-grow">
-        <h3 className="text-[#F9461C] font-extrabold text-base mb-3 text-center min-h-[48px] flex items-center justify-center leading-tight">
+        <h3 className="text-[#F9461C] font-extrabold text-sm sm:text-base mb-2 sm:mb-3 text-center min-h-[40px] sm:min-h-[48px] flex items-center justify-center leading-tight px-2">
           {product.name}
         </h3>
         
-        <p className="text-gray-700 text-xs mb-4 text-center line-clamp-4 flex-grow">
+        <p className="text-gray-700 text-xs sm:text-sm mb-3 sm:mb-4 text-center line-clamp-3 sm:line-clamp-4 flex-grow px-2">
           {product.desc}
         </p>
         
-        <div className="mt-auto space-y-4">
-          <div className="text-xs text-right text-gray-500 font-medium">
+        <div className="mt-auto space-y-3 sm:space-y-4">
+          <div className="text-xs text-right text-gray-500 font-medium px-2">
             {product.weight}
           </div>
           
           <button
-            className="w-full border-2 border-[#F9461C] text-[#F9461C] font-bold py-3 px-6 rounded-full text-sm transition-all duration-300 hover:bg-[#F9461C] hover:text-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#F9461C] focus:ring-opacity-50"
+            className="w-full border-2 border-[#F9461C] text-[#F9461C] font-bold py-2.5 sm:py-3 px-4 sm:px-6 rounded-full text-xs sm:text-sm transition-all duration-300 hover:bg-[#F9461C] hover:text-white hover:scale-105 focus:outline-none focus:ring-2 focus:ring-[#F9461C] focus:ring-opacity-50"
             onClick={handleLearnMore}
             aria-label={`Learn more about ${product.name}`}
           >
@@ -224,7 +224,7 @@ const ProductModal: React.FC<{
       aria-labelledby="modal-title"
     >
       <div
-        className="bg-white max-w-4xl w-full rounded-xl overflow-hidden max-h-[90vh] relative shadow-2xl animate-in fade-in zoom-in duration-200"
+        className="bg-white max-w-xs sm:max-w-2xl lg:max-w-4xl w-full rounded-xl overflow-hidden max-h-[90vh] relative shadow-2xl animate-in fade-in zoom-in duration-200"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close button */}
@@ -236,10 +236,10 @@ const ProductModal: React.FC<{
           ×
         </button>
 
-        <div className="flex flex-col lg:flex-row p-8 gap-8 overflow-y-auto max-h-[90vh]">
+        <div className="flex flex-col lg:flex-row p-4 sm:p-6 lg:p-8 gap-4 sm:gap-6 lg:gap-8 overflow-y-auto max-h-[90vh]">
           {/* Image */}
-          <div className="flex-1 flex justify-center items-center bg-gray-50 rounded-xl p-6">
-            <div className="relative w-80 h-80">
+          <div className="flex-1 flex justify-center items-center bg-gray-50 rounded-xl p-4 sm:p-6">
+            <div className="relative w-48 h-48 sm:w-64 sm:h-64 lg:w-80 lg:h-80">
               <Image
                 src={IMAGE_MAP[product.id] || product.image}
                 alt={product.name.en}
@@ -251,33 +251,33 @@ const ProductModal: React.FC<{
           </div>
 
           {/* Details */}
-          <div className="flex-1 flex flex-col gap-6">
-            <h2 id="modal-title" className="text-[#F9461C] text-3xl font-extrabold leading-tight">
+          <div className="flex-1 flex flex-col gap-4 sm:gap-6">
+            <h2 id="modal-title" className="text-[#F9461C] text-xl sm:text-2xl lg:text-3xl font-extrabold leading-tight">
               {product.name.en.toUpperCase()}
             </h2>
             
-            <p className="text-gray-700 whitespace-pre-line leading-relaxed">
+            <p className="text-gray-700 whitespace-pre-line leading-relaxed text-sm sm:text-base">
               {product.description.en}
             </p>
 
             {/* Key Ingredient */}
-            <div className="bg-[#B2E3D7] p-6 rounded-xl">
-              <h3 className="font-bold mb-2 text-[#009688]">{t('modal.activeIngredient')}</h3>
-              <p className="text-gray-800">{product.keyIngredient.benefits}</p>
+            <div className="bg-[#B2E3D7] p-4 sm:p-6 rounded-xl">
+              <h3 className="font-bold mb-2 text-[#009688] text-sm sm:text-base">{t('modal.activeIngredient')}</h3>
+              <p className="text-gray-800 text-sm sm:text-base">{product.keyIngredient.benefits}</p>
             </div>
 
             {/* Usage */}
-            <div className="bg-[#FFE6B0] p-6 rounded-xl">
-              <h3 className="font-bold mb-2 text-[#F9461C]">{t('modal.usage')}</h3>
-              <p className="whitespace-pre-line text-gray-800">{product.recommendedFor}</p>
+            <div className="bg-[#FFE6B0] p-4 sm:p-6 rounded-xl">
+              <h3 className="font-bold mb-2 text-[#F9461C] text-sm sm:text-base">{t('modal.usage')}</h3>
+              <p className="whitespace-pre-line text-gray-800 text-sm sm:text-base">{product.recommendedFor}</p>
             </div>
 
             {/* Benefits tags */}
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2 sm:gap-3">
               {product.useCase.benefits.map((benefit, i) => (
                 <span
                   key={i}
-                  className="bg-[#B2E3D7] text-[#009688] px-4 py-2 rounded-full text-sm font-semibold"
+                  className="bg-[#B2E3D7] text-[#009688] px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-semibold"
                 >
                   {benefit}
                 </span>
@@ -424,7 +424,7 @@ const ProductsGrid: React.FC = () => {
   return (
     <section 
       id="products-section" 
-      className="w-full py-12 flex flex-col items-center bg-white" 
+      className="w-full py-8 sm:py-12 flex flex-col items-center bg-white" 
       ref={gridRef}
     >
       {selectedProduct && (
@@ -434,12 +434,12 @@ const ProductsGrid: React.FC = () => {
         />
       )}
 
-      <div className="w-full max-w-7xl flex flex-col items-center mb-8 px-4">
+      <div className="w-full max-w-7xl flex flex-col items-center mb-6 sm:mb-8 px-4 sm:px-6 lg:px-8">
         {/* Filter and Search Section */}
-        <div className="w-full mb-12 space-y-6">
+        <div className="w-full mb-8 sm:mb-12 space-y-4 sm:space-y-6">
           {/* Search Bar */}
           <div className="flex justify-center">
-            <div className="relative w-full max-w-md">
+            <div className="relative w-full max-w-xs sm:max-w-md">
               <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                 <svg className="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -450,7 +450,7 @@ const ProductsGrid: React.FC = () => {
                 value={searchQuery}
                 onChange={handleSearchChange}
                 placeholder={t('products.grid.search.placeholder')}
-                className="w-full pl-12 pr-12 py-4 border-2 border-gray-200 rounded-full text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#F9461C] focus:ring-2 focus:ring-[#F9461C] focus:ring-opacity-20 transition-all duration-300 text-base"
+                className="w-full pl-10 sm:pl-12 pr-10 sm:pr-12 py-3 sm:py-4 border-2 border-gray-200 rounded-full text-gray-900 placeholder-gray-400 focus:outline-none focus:border-[#F9461C] focus:ring-2 focus:ring-[#F9461C] focus:ring-opacity-20 transition-all duration-300 text-sm sm:text-base"
               />
               {searchQuery && (
                 <button
@@ -468,10 +468,10 @@ const ProductsGrid: React.FC = () => {
 
           {/* Category Filter Buttons */}
           <div className="flex justify-center">
-            <div className="flex flex-wrap gap-3 bg-gray-50 p-2 rounded-full border border-gray-200">
+            <div className="flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-3 bg-gray-50 p-2 rounded-2xl sm:rounded-full border border-gray-200">
               <button
                 onClick={() => handleCategoryChange("all")}
-                className={`px-6 py-3 rounded-full font-bold text-sm transition-all duration-300 whitespace-nowrap ${
+                className={`px-4 sm:px-6 py-2.5 sm:py-3 rounded-full font-bold text-xs sm:text-sm transition-all duration-300 whitespace-nowrap text-center ${
                   activeCategory === "all"
                     ? "bg-[#F9461C] text-white shadow-lg scale-105"
                     : "bg-white text-gray-600 hover:bg-gray-100 hover:text-[#F9461C] shadow-sm hover:shadow-md"
@@ -481,7 +481,7 @@ const ProductsGrid: React.FC = () => {
               </button>
               <button
                 onClick={() => handleCategoryChange("active")}
-                className={`px-6 py-3 rounded-full font-bold text-sm transition-all duration-300 whitespace-nowrap ${
+                className={`px-4 sm:px-6 py-2.5 sm:py-3 rounded-full font-bold text-xs sm:text-sm transition-all duration-300 whitespace-nowrap text-center ${
                   activeCategory === "active"
                     ? "bg-[#F9461C] text-white shadow-lg scale-105"
                     : "bg-white text-gray-600 hover:bg-gray-100 hover:text-[#F9461C] shadow-sm hover:shadow-md"
@@ -491,7 +491,7 @@ const ProductsGrid: React.FC = () => {
               </button>
               <button
                 onClick={() => handleCategoryChange("everyday")}
-                className={`px-6 py-3 rounded-full font-bold text-sm transition-all duration-300 whitespace-nowrap ${
+                className={`px-4 sm:px-6 py-2.5 sm:py-3 rounded-full font-bold text-xs sm:text-sm transition-all duration-300 whitespace-nowrap text-center ${
                   activeCategory === "everyday"
                     ? "bg-[#F9461C] text-white shadow-lg scale-105"
                     : "bg-white text-gray-600 hover:bg-gray-100 hover:text-[#F9461C] shadow-sm hover:shadow-md"
@@ -526,7 +526,7 @@ const ProductsGrid: React.FC = () => {
         </div>
 
         {/* Products Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 w-full">
+        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6 lg:gap-8 w-full">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product) => (
               <ProductCard
