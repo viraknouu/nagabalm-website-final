@@ -63,7 +63,7 @@ const ContactFormSection = () => {
               </div>
               <div>
                 <div className="font-bold text-sm mb-1">{tInfo('phone.title')}</div>
-                <a href="tel:+85516269359" className="text-sm text-[#F9461C] hover:text-[#d13a17]">
+                <a href="tel:+85512269359" className="text-sm text-[#F9461C] hover:text-[#d13a17]">
                   +855 12 269 359
                 </a>
               </div>
